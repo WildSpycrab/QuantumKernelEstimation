@@ -11,9 +11,9 @@ from Preprocessing import *
 # In[ ]:
 
 
-gpuAcceleration = True
+gpuAcceleration = False
 if gpuAcceleration:
-    backend_options = {        
+    backend_options = {
         'device': "GPU",
     }
 
@@ -50,7 +50,7 @@ df_label_train_class, df_train = removeWeakTornados(df_label_train_class, df_tra
 df_label_test_class, df_test = removeWeakTornados(df_label_test_class, df_test)
 
 # Renormalize Data
-df_train = df_train.drop(df_train.columns[-1], axis = 1) 
+df_train = df_train.drop(df_train.columns[-1], axis = 1)
 df_train = np.tanh(df_train)
 df_test = df_test.drop(df_test.columns[-1], axis = 1)
 df_test = np.tanh(df_test)
@@ -115,9 +115,10 @@ feature_maps = {
 
 # In[ ]:
 
-
+print("beginning to compute kernels")
 for encoding in feature_maps:
     if encodingSettings[encoding]:
+        print(f"computing kernel for {encoding} feature map")
         quantum_kernel = FidelityQuantumKernel(feature_map=feature_maps[encoding], fidelity=ComputeUncompute(sampler))
         quantum_kernel_train = quantum_kernel.evaluate(df_train)
         quantum_kernel_test = quantum_kernel.evaluate(df_test, df_train)

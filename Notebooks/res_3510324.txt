@@ -1,0 +1,7 @@
+cpu kern
+Job starting at Sun Oct 19 12:48:10 AM EDT 2025
+✓ Training data loaded: 69 rows, 8 columns
+✓ Test data loaded: 21 rows, 8 columns
+beginning to compute kernels
+computing kernel for zzEncoding feature map
+Job finished at Sun Oct 19 12:49:59 AM EDT 2025
